@@ -4,8 +4,9 @@ from django.db import models
 class Search(models.Model):
   search = models.CharField(max_length=500)
   created=models.DateTimeField( auto_now=True)
-  
+
   #to specify a kind of representation we want to see in the admin page
+
   def __str__(self):
       return "{}".format(self.search)
   class Meta:

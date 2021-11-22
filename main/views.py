@@ -1,5 +1,6 @@
 from django.shortcuts import render
-
+from bs4 import BeautifulSoup#for the search functionnality
+import requests
 # Create your views here.
 def home(request):
     return render(request, 'index.html')

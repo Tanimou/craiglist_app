@@ -1,8 +1,10 @@
-from django.shortcuts import render
-from bs4 import BeautifulSoup#for the search functionnality
 import requests
+from bs4 import BeautifulSoup  # for the search functionnality
+from django.shortcuts import render
 from requests.compat import quote_plus
+
 from .models import Search
+
 # Create your views here.
 
 BASE_CRAIGSLIST_URL = 'https://losangeles.craigslist.org/search/?query={}'#we put curly brack to dynamize the search result. 

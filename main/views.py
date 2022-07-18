@@ -22,20 +22,20 @@ def search(request):
    # print(final_url)
     response=requests.get(final_url)#see python_tutorial/web scrapping for more informations
   #  print(response)
-  
+
     data=response.text
     #print(data)
-    
-    
+
+
     soup = BeautifulSoup(data, features='html.parser')
     post_listings = soup.find_all('li', {'class': 'result-row'})
     #print(post_listings)
     final_postings = []
-       
+
     for post in post_listings:
         post_title = post.find(class_="result-title").text
         post_url = post.find("a").get("href")
-        
+
         if post.find(class_='result-price'):
             post_price = post.find(class_='result-price').text
         else:
@@ -49,16 +49,14 @@ def search(request):
             post_image_url = 'https://craigslist.org/images/peace.jpg'
 
         final_postings.append( (post_title, post_url, post_price, post_image_url))
-
-        
    # post_titles=soup.find_all("a",{"class":"result-title"})#will find all <a class="result-title">...</a> and return a list
    #print(post_titles[0].text)#will picks out everything between the tags, similar to get_text() function
    # print(post_titles[0].get("href"))#will get the link
-  
-  
+
+
     stuff_frontend={
         "search":search,
         "final_postings":final_postings,
         }
-    
+
     return render(request, 'search.html', stuff_frontend)

@@ -8,6 +8,6 @@ class Search(models.Model):
   #to specify a kind of representation we want to see in the admin page
 
   def __str__(self):
-      return "{} {}".format(self.search,self.created)
+    return f"{self.search} {self.created}"
   class Meta:
       verbose_name_plural="Searches"
